@@ -1,0 +1,33 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /ware-x
+
+spring:
+  application:
+    name: warehouse-optimization
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/ware_x"
+    username: postgres
+    password: 5432
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update   # Or validate, create-drop, none
+    show-sql: true #show sql in logs
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  #keycloack:
+  security:
+    oauth2:
+      client:
+        provider:
+          external:
+            issuer-uri: http://localhost:8080/realms/external
+## logging
+logging:
+  level:
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{dd-MM-yyyy HH:mm:ss} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
