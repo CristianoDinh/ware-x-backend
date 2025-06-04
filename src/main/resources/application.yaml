@@ -38,6 +38,10 @@ spring:
               - offline_access
               - profile
             authorization-grant-type: authorization_code
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/external
+          jwk-set-uri: http://localhost:8080/realms/external/protocol/openid-connect/certs
 ## logging
 logging:
   level:

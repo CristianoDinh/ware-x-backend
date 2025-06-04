@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class IndexController {
@@ -17,15 +18,15 @@ public class IndexController {
         return new HashMap(){{
             put("hello", user.getAttribute("name"));
             put("your email is", user.getAttribute("email"));
+            put("your role is", user.getAttribute("role"));
         }};
     }
 
-
     @GetMapping(path = "/unauthenticated")
-    public HashMap unauthenticatedRequests() {
-        return new HashMap(){{
-            put("this is ", "unauthenticated endpoint");
-        }};
+    public Map<String, String> unauthenticatedRequests() {
+        Map<String, String> response = new HashMap<>();
+        response.put("this is", "unauthenticated endpoint");
+        return response;
     }
 }
 
