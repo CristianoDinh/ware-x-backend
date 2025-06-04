@@ -1,7 +1,9 @@
 server:
-  port: 8081
+  port: 8082
   servlet:
     context-path: /ware-x
+  ## handling all the reverse proxies
+  forward-headers-strategy: FRAMEWORK
 
 spring:
   application:
@@ -25,6 +27,17 @@ spring:
         provider:
           external:
             issuer-uri: http://localhost:8080/realms/external
+        registration:
+          external:
+            provider: external
+            client-name: external-client
+            client-id: external-client
+            client-secret: KEDpti92UGccNxQTdwI1yLd04OMnLF3x
+            scope:
+              - openid
+              - offline_access
+              - profile
+            authorization-grant-type: authorization_code
 ## logging
 logging:
   level:
